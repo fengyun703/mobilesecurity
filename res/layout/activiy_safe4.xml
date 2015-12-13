@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:myspace="http://schemas.android.com/apk/res/com.mobilesecurity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        style="@style/text_title_style"
+        android:text="4.恭喜您设置完成" />
+
+    <com.mobilesecurity.ui.SettingItemView
+        android:clickable="true"
+        android:id="@+id/sim_opensafe_safe4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        myspace:mytext="防盗保护的状态"
+        />
+    
+   
+    <Button 
+        android:onClick="openPermission"
+        android:text = "开启设备超级管理权限"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+     <TextView 
+         android:layout_marginLeft="10dip"
+         android:layout_marginRight="10dip"
+        android:text = "只有开启设备超级管理权限，才能进行远程锁屏和远程销毁数据操作。"
+         android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        />
+
+
+    <LinearLayout
+        android:layout_marginTop="10dip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_invisible" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_invisible" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_invisible" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_online" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/phone" />
+
+        <Button
+            android:text="设置完成"
+           style="@style/Button_next_style" />
+        <Button
+            android:text="上一步"
+           style="@style/Button_pre_style" />
+    </RelativeLayout>
+
+</LinearLayout>

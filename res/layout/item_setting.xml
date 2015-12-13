@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/item_setting_selector"
+    android:layout_height="50dip" >
+    
+    <TextView
+        android:id="@+id/tv_setting_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_centerVertical="true"
+        android:text="这是什么么功能"
+        android:textSize="18sp" />
+
+    <CheckBox
+        android:id="@+id/cb_setting_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:layout_marginRight="10dip"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:clickable="false"
+        android:focusable="false"/>
+    
+    <View
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dip"
+        android:layout_below="@id/cb_setting_item"
+        android:layout_width="wrap_content"
+        android:layout_height="1dip"
+        android:background="#44000000"
+        />
+
+    
+
+</RelativeLayout>

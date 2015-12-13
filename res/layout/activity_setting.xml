@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:myspace="http://schemas.android.com/apk/res/com.mobilesecurity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/item_setting_selector"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#550000ff"
+        android:gravity="center"
+        android:paddingBottom="10dip"
+        android:paddingTop="10dip"
+        android:text="设置中心"
+        android:textSize="28sp" />
+ 
+
+    <com.mobilesecurity.ui.SettingItemView
+        android:id="@+id/siv_update_setting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:clickable="true"
+        android:focusable="true"
+        myspace:mytext="开启自动升级"
+        />
+    <com.mobilesecurity.ui.SettingItemView
+        android:id="@+id/siv_blacknumber_setting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+         android:clickable="true"
+        android:focusable="true"
+        myspace:mytext="开启黑名单拦截"
+        />
+    
+    <com.mobilesecurity.ui.SettingItemView
+        android:id="@+id/siv_address_setting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+         android:clickable="true"
+        android:focusable="true"
+        myspace:mytext="开启来电去电归属地查询"
+        />
+   <com.mobilesecurity.ui.SettingChangeView
+       android:id="@+id/scv_address_color"
+       android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="setbackgroud"
+       myspace:title="归属地提示背景颜色"
+       myspace:result="灰色"
+       />
+ 
+   
+
+</LinearLayout>

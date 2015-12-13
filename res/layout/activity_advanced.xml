@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:background="#44ffff00"
+        style="@style/text_title_style"
+        android:text="高级工具" />
+
+    <TextView 
+        style="@style/text_content_style"
+        android:text="查询电话归属地"
+        android:clickable="true"
+        android:onClick="openquery"
+        android:background="@drawable/bt_default_bg"/>
+</LinearLayout>

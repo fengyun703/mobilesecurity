@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <TextView 
+        android:text="归属地查询"
+        style="@style/text_title_style"/>
+
+    <EditText
+        android:id="@+id/et_number_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="查询"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="query" />
+    <LinearLayout 
+         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView 
+            android:text="结果："
+            android:layout_width="wrap_content"
+            style="@style/text_content_style"/>
+        <TextView 
+        style="@style/text_content_style"
+        android:textColor="#ff0000"
+        android:id="@+id/tv_result_address"
+        android:text="北京"
+        />
+    </LinearLayout>
+    
+
+</LinearLayout>

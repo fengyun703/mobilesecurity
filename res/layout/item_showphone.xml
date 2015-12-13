@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#22000000" >
+
+    <TextView
+        android:layout_marginLeft="5dip"
+        android:layout_alignParentLeft="true"
+        android:textSize="18sp"
+        android:textColor="#99ff0000"
+        android:id="@+id/tv_name_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:text="姓名"/>
+    
+    <TextView
+         android:layout_marginRight="5dip"
+        android:layout_alignParentRight="true"
+        android:textSize="18sp"
+        android:textColor="#990000ff"
+        android:id="@+id/tv_num_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:text="电话"/>
+
+</RelativeLayout>

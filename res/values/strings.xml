@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">mobileSecurity</string>
+    <string name="action_settings">Settings</string>
+    <string name="admin_label">开启设备超级管理权限</string>
+    <string name="admin_description">开启设备超级管理权限，就能更好地使用手机卫士</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="Urlpath">http://192.168.1.106:8080/info.json</string>
+
+</resources>
