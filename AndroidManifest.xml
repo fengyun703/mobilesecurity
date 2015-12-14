@@ -58,6 +58,7 @@
         <activity android:name="com.mobilesecurity.activities.BlackNumberActivity"></activity>
         <activity android:name="com.mobilesecurity.activities.AddressQueryActivity"></activity>
         <activity android:name="com.mobilesecurity.activities.AdvancedActivity"></activity>
+        <activity android:name="com.mobilesecurity.activities.CommonNumQueryActivity"></activity>
         
 
         <receiver android:name="com.mobilesecurity.receiver.BootCompletedReceiver" >

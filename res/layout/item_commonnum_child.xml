@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <TextView 
+        android:layout_marginLeft="30dip"
+        android:text="孩子姓名"
+        android:textColor="#0000ff"
+        android:id="@+id/tv_childname_commmonnum"
+        style="@style/text_content_style"/>
+    <TextView 
+         android:layout_marginLeft="30dip"
+        android:text="孩子号码"
+        android:textColor="#0000ff"
+        android:id="@+id/tv_childnum_commmonnum"
+        style="@style/text_content_style"/>
+    
+
+</LinearLayout>

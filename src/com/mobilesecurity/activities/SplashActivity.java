@@ -78,16 +78,17 @@ public class SplashActivity extends Activity {
 			// System.out.println("开始检查自动更新");
 		}
 		
-		copyDb();
+		copyDb("address.db");
+		copyDb("commonnum.db");
 	}
 	/**
 	 * 拷贝数据库文件到files目录
 	 */
-	public void copyDb(){
-		File file = new File(getFilesDir(),"address.db");
+	public void copyDb(String filename){
+		File file = new File(getFilesDir(),filename);
 		if(!file.exists()){
 			try {
-				InputStream in = getAssets().open("address.db");
+				InputStream in = getAssets().open(filename);
 				OutputStream out = new FileOutputStream(file);
 				byte [] bs = new byte[1024];
 				int len = 0;

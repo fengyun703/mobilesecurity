@@ -20,6 +20,6 @@ public class AdvancedActivity extends Activity {
 	}
 	
 	public void commonnum(View view){
-		
+		StartActivityUtils.startActivity(this, CommonNumQueryActivity.class);
 	}
 }
