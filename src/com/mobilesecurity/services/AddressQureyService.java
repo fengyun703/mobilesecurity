@@ -12,16 +12,22 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.database.DataSetObserver;
 import android.graphics.PixelFormat;
 import android.os.IBinder;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
+import android.widget.Adapter;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,6 +60,8 @@ public class AddressQureyService extends Service {
 		registerReceiver(callReceiver, filter);
 		tm.listen(listener, PhoneStateListener.LISTEN_CALL_STATE);
 		wm = (WindowManager) getSystemService(WINDOW_SERVICE);
+		ProgressBar ba = new ProgressBar(this);
+		ba.setProgress(1);
 	}
 
 	class Listener extends PhoneStateListener {
@@ -94,27 +102,34 @@ public class AddressQureyService extends Service {
 			String address = AddressDao.getAddress(number);
 			showToast(address);
 			// System.out.println("查询去电归属地"+number+"   "+address);
+			
 		}
 	}
 
 	public void showToast(String address) {
-		WindowManager.LayoutParams params = new WindowManager.LayoutParams();
+		final WindowManager.LayoutParams params = new WindowManager.LayoutParams();
 		toastView = View.inflate(this, R.layout.mytoast_address, null);
 		TextView tv = (TextView) toastView.findViewById(R.id.tv_address_toast);
 		tv.setText(address);
 		toastView.setBackgroundResource(icons[sp.getInt("color", 0)]);
 		params.height = WindowManager.LayoutParams.WRAP_CONTENT;
 		params.width = WindowManager.LayoutParams.WRAP_CONTENT;
-		params.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
-				| WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
-				| WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
-		//params.flags = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
+		//params.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+		//		| WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+		//		| WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
+		params.flags = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON|WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
 
+		final int windowx = wm.getDefaultDisplay().getWidth();
+		final int windowy = wm.getDefaultDisplay().getHeight();
+		params.x = sp.getInt("x", windowx/2);
+		params.y = sp.getInt("y", windowy/2);
+		params.gravity= Gravity.LEFT+ Gravity.TOP;
 		params.format = PixelFormat.TRANSLUCENT;
-		//params.type =  WindowManager.LayoutParams.TYPE_APPLICATION_PANEL;
-		params.type = WindowManager.LayoutParams.TYPE_TOAST;
+		params.type =  WindowManager.LayoutParams.TYPE_PHONE;
+		wm.addView(toastView, params);
+		//params.type = WindowManager.LayoutParams.TYPE_TOAST;
 		//params.setTitle("Toast");
-		/*toastView.setOnTouchListener(new OnTouchListener() {
+		toastView.setOnTouchListener(new OnTouchListener() {
 
 			
 			private int startx = 0;
@@ -123,32 +138,46 @@ public class AddressQureyService extends Service {
 			private int endy = 0;
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-				System.out.println("相应点击事件");
+				
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
-					startx =(int) event.getX();
-					starty = (int) event.getY();
+					//System.out.println("相ACTION_DOWN点击事件");
+					startx =(int) event.getRawX();
+					starty = (int) event.getRawY();
 					break;
 				case MotionEvent.ACTION_UP:
-
+					Editor ed = sp.edit();
+					
+					ed.putInt("x", params.x);
+					ed.putInt("y", params.y);
+					ed.commit();
+					//System.out.println("ACTION_UP应点击事件");
 					break;
 				case MotionEvent.ACTION_MOVE:
-					endx = (int) event.getX();
-					endy = (int) event.getY();
-					AnimatorSet set = new AnimatorSet();
-					ObjectAnimator oa1 = ObjectAnimator.ofFloat(v, "translationX", endx- startx);
-					ObjectAnimator oa2 = ObjectAnimator.ofFloat(v, "translationY", endy-starty);
-					set.playTogether(oa1, oa2);
-					set.start();
+					//System.out.println("相应ACTION_MOVE击事件");
+					endx = (int) event.getRawX();
+					endy = (int) event.getRawY();
+					params.x += endx-startx;
+					params.y += endy-starty;
+					System.out.println("1 params.x = "+params.x+"params.y =  "+params.y);
+					if(params.x< 0 ) params.x = 0;
+					if(params.y< 0 ) params.y = 0;
+					if(params.x > windowx-toastView.getWidth()) params.x = windowx-toastView.getWidth();
+					if(params.y > windowy-toastView.getHeight()) params.y = windowy-toastView.getHeight();
+					//System.out.println("2 params.x = "+params.x+"params.y =  "+params.y);
+					wm.updateViewLayout(toastView, params);
+					startx =(int) event.getRawX();
+					starty = (int) event.getRawY();
 					break;
 
 				default:
+					
 					break;
 				}
 				return true;
 			}
-		});*/
-		wm.addView(toastView, params);
+		});
+		
 
 	}
 
@@ -170,5 +199,6 @@ public class AddressQureyService extends Service {
 		}
 
 	}
+	
 
 }

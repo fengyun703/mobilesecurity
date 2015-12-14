@@ -15,4 +15,10 @@
         android:clickable="true"
         android:onClick="openquery"
         android:background="@drawable/bt_default_bg"/>
+    <TextView 
+        style="@style/text_content_style"
+        android:text="常用电话查询"
+        android:clickable="true"
+        android:onClick="commonnum"
+        android:background="@drawable/bt_default_bg"/>
 </LinearLayout>

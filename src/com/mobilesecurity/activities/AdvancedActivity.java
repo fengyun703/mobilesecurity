@@ -18,4 +18,8 @@ public class AdvancedActivity extends Activity {
 	public void openquery(View view){
 		StartActivityUtils.startActivity(this, AddressQueryActivity.class);
 	}
+	
+	public void commonnum(View view){
+		
+	}
 }
