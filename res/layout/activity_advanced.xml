@@ -21,4 +21,16 @@
         android:clickable="true"
         android:onClick="commonnum"
         android:background="@drawable/bt_default_bg"/>
+    <TextView 
+        style="@style/text_content_style"
+        android:text="短信备份"
+        android:clickable="true"
+        android:onClick="smsbackup"
+        android:background="@drawable/bt_default_bg"/>
+    <TextView 
+        style="@style/text_content_style"
+        android:text="短信回复"
+        android:clickable="true"
+        android:onClick="smsrecovery"
+        android:background="@drawable/bt_default_bg"/>
 </LinearLayout>
