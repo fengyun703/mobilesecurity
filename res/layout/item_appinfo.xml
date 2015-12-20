@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:layout_marginLeft="5dip"
+        android:src="@drawable/ic_launcher"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:id="@+id/iv_appicon" 
+        android:layout_width="30dip"
+        android:layout_height="30dip"/>
+    <TextView 
+        android:layout_marginTop="5dip"
+        android:layout_marginLeft="5dip"
+        android:layout_toRightOf="@id/iv_appicon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_appname"
+        android:text="应用程序名称"
+        android:textSize="20sp"
+        android:textColor="#ff000000"
+        />
+    <TextView 
+        android:layout_below="@id/tv_appname"
+        android:layout_marginLeft="5dip"
+        android:layout_toRightOf="@id/iv_appicon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_isInRom"
+        android:text="手机内存"
+        android:textSize="18sp"
+        android:textColor="#99000000"
+        />
+    
+    <TextView 
+        android:layout_below="@id/tv_appname"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_appszie"
+        android:text="80KB"
+        android:textSize="18sp"
+        android:textColor="#99ff0000"
+        />
+    
+    
+
+</RelativeLayout>

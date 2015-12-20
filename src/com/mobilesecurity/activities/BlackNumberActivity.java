@@ -56,6 +56,7 @@ public class BlackNumberActivity extends Activity {
 		lv_blacknumber = (ListView) findViewById(R.id.lv_blacknumber);
 		dao = new MyBlackNumberDao(this);
 		ll_loading = (LinearLayout) findViewById(R.id.ll_loading);
+		//ll_loading.addView(child);
 		
 		lv_blacknumber.setOnScrollListener(new AbsListView.OnScrollListener() {
 
@@ -269,6 +270,7 @@ public class BlackNumberActivity extends Activity {
 
 				}
 			});
+			//System.out.println("position + "+ position);
 			return convertView;
 		}
 

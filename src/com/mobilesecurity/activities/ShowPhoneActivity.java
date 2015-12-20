@@ -72,6 +72,20 @@ public class ShowPhoneActivity extends Activity {
 	class MyPhoneAdapter extends BaseAdapter{
 
 		@Override
+		public int getItemViewType(int position) {
+			// TODO Auto-generated method stub
+			return super.getItemViewType(position);
+		}
+
+
+		@Override
+		public int getViewTypeCount() {
+			// TODO Auto-generated method stub
+			return super.getViewTypeCount();
+		}
+
+
+		@Override
 		public int getCount() {
 			return phoneList.size();
 		}

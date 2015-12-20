@@ -70,7 +70,8 @@ public class HomeActivity extends Activity {
 							BlackNumberActivity.class);
 					break;
 				case 2:
-
+					StartActivityUtils.startActivity(HomeActivity.this,
+							AppManagerActivity.class);
 					break;
 				case 7:
 					StartActivityUtils.startActivity(HomeActivity.this,

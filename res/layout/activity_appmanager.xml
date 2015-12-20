@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        style="@style/text_title_style"
+        android:background="#99ff4400"
+        android:text="软件管理" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2200ff00"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_freeofmemery_app"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="内存可用:"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_freeofsd_app"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="sd卡可用:"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ListView
+            android:id="@+id/lv_content_app"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:visibility="invisible"
+            android:id="@+id/ll_loading_app"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="正在加载中" />
+
+            <ProgressBar
+                android:indeterminateDrawable="@drawable/progressbar_bg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <TextView
+            android:background="#ff888888"
+            android:textSize="16sp"
+            android:id="@+id/tv_status_app"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="用户应用：4个" />
+    </FrameLayout>
+
+</LinearLayout>

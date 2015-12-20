@@ -123,7 +123,7 @@ public class AddressQureyService extends Service {
 		final int windowy = wm.getDefaultDisplay().getHeight();
 		params.x = sp.getInt("x", windowx/2);
 		params.y = sp.getInt("y", windowy/2);
-		params.gravity= Gravity.LEFT+ Gravity.TOP;
+		params.gravity= Gravity.LEFT+ Gravity.TOP+ Gravity.RIGHT;
 		params.format = PixelFormat.TRANSLUCENT;
 		params.type =  WindowManager.LayoutParams.TYPE_PHONE;
 		wm.addView(toastView, params);

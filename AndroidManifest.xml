@@ -3,7 +3,7 @@
     package="com.mobilesecurity"
     android:versionCode="1"
     android:versionName="1.0测试版本" >
-
+ <!-- android:installLocation="preferExternal" -->
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="18" />
@@ -26,18 +26,19 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="android.permission.WRITE_SMS"/>
     <uses-permission android:name="android.permission.READ_SMS"/>
+    <instrumentation android:targetPackage="com.mobilesecurity" android:name="android.test.InstrumentationTestRunner"></instrumentation>
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <uses-library android:name="android.test.runner"/>
         <activity
             android:name="com.mobilesecurity.activities.SplashActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-              
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -61,6 +62,7 @@
         <activity android:name="com.mobilesecurity.activities.AddressQueryActivity"></activity>
         <activity android:name="com.mobilesecurity.activities.AdvancedActivity"></activity>
         <activity android:name="com.mobilesecurity.activities.CommonNumQueryActivity"></activity>
+        <activity android:name="com.mobilesecurity.activities.AppManagerActivity"></activity>
         
 
         <receiver android:name="com.mobilesecurity.receiver.BootCompletedReceiver" >
