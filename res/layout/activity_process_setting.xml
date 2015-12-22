@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:myspace="http://schemas.android.com/apk/res/com.mobilesecurity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/item_setting_selector"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#550000ff"
+        android:gravity="center"
+        android:paddingBottom="10dip"
+        android:paddingTop="10dip"
+        android:text="进程管理设置"
+        android:textSize="28sp" />
+ 
+
+    <com.mobilesecurity.ui.SettingItemView
+        android:id="@+id/siv_show_sysprocess"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:clickable="true"
+        android:focusable="true"
+        myspace:mytext="显示系统进程"
+        />
+    <com.mobilesecurity.ui.SettingItemView
+        android:id="@+id/siv_autoclearprocess"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+         android:clickable="true"
+        android:focusable="true"
+        myspace:mytext="锁屏自动清除"
+        />
+    
+    
+   
+   
+
+</LinearLayout>

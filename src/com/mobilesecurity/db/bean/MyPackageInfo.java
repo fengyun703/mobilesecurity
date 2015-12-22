@@ -10,6 +10,7 @@ public class MyPackageInfo {
 	private Boolean isInRom;
 	private Boolean isUserApp;
 	private long appSize;
+	
 	public String getPackageName() {
 		return packageName;
 	}

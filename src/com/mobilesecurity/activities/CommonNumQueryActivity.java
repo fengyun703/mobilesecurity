@@ -27,6 +27,7 @@ public class CommonNumQueryActivity extends Activity {
 		elv = (ExpandableListView) findViewById(R.id.elv_commonnum);
 		db = SQLiteDatabase.openDatabase("/data/data/com.mobilesecurity/files/commonnum.db", null, SQLiteDatabase.OPEN_READONLY);
 		elv.setAdapter(new CommonNumAdapter());
+	
 		elv.setOnChildClickListener(new OnChildClickListener() {
 			
 			@Override

@@ -106,7 +106,6 @@ public class AppManagerActivity extends Activity implements OnClickListener {
 		listUser = new ArrayList<MyPackageInfo>();
 		listSys = new ArrayList<MyPackageInfo>();
 
-		loadAppinfo();
 		uninstallReceiver = new UnistallReceiver();
 		IntentFilter unfilter = new IntentFilter();
 		unfilter.addAction(Intent.ACTION_PACKAGE_REMOVED);
@@ -123,17 +122,26 @@ public class AppManagerActivity extends Activity implements OnClickListener {
 
 			@Override
 			public void onScrollStateChanged(AbsListView view, int scrollState) {
-
+				System.out.println("onScrollStateChanged");
 			}
 
 			@Override
 			public void onScroll(AbsListView view, int firstVisibleItem,
 					int visibleItemCount, int totalItemCount) {
 				closePopupw();
-				if (firstVisibleItem <= listUser.size()) {
-					tv_status_app.setText("用户应用：" + listUser.size() + "个");
-				} else {
-					tv_status_app.setText("系统应用：" + listSys.size() + "个");
+				/*
+				 * System.out.println("onScroll: "+firstVisibleItem+listUser.
+				 * toString()+"visibleItemCount = "+visibleItemCount
+				 * +"totalItemCount = "+ totalItemCount);
+				 */
+				if ((listUser != null) && (listSys != null)) {
+					if (firstVisibleItem <= listUser.size()) {
+						tv_status_app.setText("用户应用：" + listUser.size() + "个");
+						// System.out.println("用户应用：" + listUser.size() + "个");
+					} else {
+						tv_status_app.setText("系统应用：" + listSys.size() + "个");
+						// System.out.println("系统应用：" + listSys.size() + "个");
+					}
 				}
 			}
 		});
@@ -190,7 +198,7 @@ public class AppManagerActivity extends Activity implements OnClickListener {
 
 			}
 		});
-
+		loadAppinfo();
 	}
 
 	private void loadAppinfo() {
@@ -213,12 +221,12 @@ public class AppManagerActivity extends Activity implements OnClickListener {
 
 		@Override
 		public int getCount() {
-			return listUser.size() + listSys.size();
+			return listUser.size() + listSys.size() + 2;
 		}
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-			System.out.println("position:"+position);
+			System.out.println("position:" + position);
 			ViewHold hold = null;
 			MyPackageInfo info = null;
 			if (position == 0) {
@@ -257,7 +265,6 @@ public class AppManagerActivity extends Activity implements OnClickListener {
 						.findViewById(R.id.tv_appszie);
 				convertView.setTag(hold);
 			}
-			
 
 			hold.tv_name.setText(info.getAppName());
 			hold.img_icon.setImageDrawable(info.getIcon());

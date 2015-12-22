@@ -25,6 +25,22 @@
         android:focusable="true"
         myspace:mytext="开启自动升级"
         />
+     <!-- <com.mobilesecurity.ui.SettingItemView
+        android:id="@+id/siv_update_setting1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:clickable="true"
+        android:focusable="true"
+        myspace:mytext="开启自动升级1"
+        />
+      <com.mobilesecurity.ui.SettingItemView
+        android:id="@+id/siv_update_setting2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:clickable="true"
+        android:focusable="true"
+        myspace:mytext="开启自动升级2"
+        /> -->
     <com.mobilesecurity.ui.SettingItemView
         android:id="@+id/siv_blacknumber_setting"
         android:layout_width="match_parent"
