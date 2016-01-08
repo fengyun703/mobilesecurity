@@ -20,6 +20,8 @@ public class TrafficUtils {
 		for(PackageInfo info :packinfos){
 			long rx = TrafficStats.getUidRxBytes(info.applicationInfo.uid);
 			long tx = TrafficStats.getUidTxBytes(info.applicationInfo.uid);
+			String appname = info.applicationInfo.loadLabel(pm).toString();
+			System.out.println(appname+"rx = "+ rx +",  tx = "+ tx);
 			if(rx>0||tx>0){
 				mInfo = new MyTrafficInfo();
 				mInfo.setIcon(info.applicationInfo.loadIcon(pm));
@@ -27,7 +29,7 @@ public class TrafficUtils {
 				mInfo.setTx(tx);
 				mInfo.setTotal(rx+tx);
 				mInfo.setUid(info.applicationInfo.uid);
-				mInfo.setAppName(info.applicationInfo.loadLabel(pm).toString());
+				mInfo.setAppName(appname);
 				list.add(mInfo);
 			}
 		}

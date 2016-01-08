@@ -50,6 +50,7 @@ public class TrafficManagerActivity extends Activity {
 		long mobileRx =  TrafficStats.getMobileRxBytes();
 		long mobileTx =  TrafficStats.getMobileTxBytes();
 		long mobleTotal = mobileRx+mobileTx;
+	
 		String mobile = "本次开机以来Wify总用流量："+Formatter.formatFileSize(this, mobleTotal);
 		tv_mobile.setText(mobile);
 		
@@ -59,7 +60,7 @@ public class TrafficManagerActivity extends Activity {
 		long wifyTotal = totaltal - mobleTotal;
 		String wify ="本次开机以来2G/3G/4G总用流量：" +Formatter.formatFileSize(this, wifyTotal);
 		tv_wify.setText(wify);
-		
+		//System.out.println(wify+"\n"+mobile+"\n"+totaltal);
 		getAppTraffic();
 		
 	}
@@ -98,8 +99,10 @@ public class TrafficManagerActivity extends Activity {
 				hold = (ViewHold) convertView.getTag();
 			}else{
 				convertView = View.inflate(TrafficManagerActivity.this, R.layout.item_traffic, null);
+				hold = new ViewHold();
 				hold.icon = (ImageView) convertView.findViewById(R.id.iv_icon_traffic);
 				hold.tv_rx = (TextView) convertView.findViewById(R.id.tv_rx_traffic);
+				hold.tv_appName = (TextView) convertView.findViewById(R.id.tv_appname_traffic);
 				hold.tv_tx = (TextView) convertView.findViewById(R.id.tv_tx_traffic);
 				hold.tv_total= (TextView) convertView.findViewById(R.id.tv_total_traffic);
 				convertView.setTag(hold);
@@ -109,6 +112,7 @@ public class TrafficManagerActivity extends Activity {
 			hold.tv_rx.setText( Formatter.formatFileSize(TrafficManagerActivity.this, info.getRx()));
 			hold.tv_tx.setText( Formatter.formatFileSize(TrafficManagerActivity.this, info.getTx()));
 			hold.tv_total.setText( Formatter.formatFileSize(TrafficManagerActivity.this, info.getTotal()));
+			hold.tv_appName.setText(info.getAppName());
 			return convertView;
 		}
 		
@@ -116,6 +120,7 @@ public class TrafficManagerActivity extends Activity {
 	
 	private class ViewHold{
 		private ImageView icon;
+		private TextView tv_appName;
 		private TextView tv_rx;
 		private TextView tv_tx;
 		private TextView tv_total;

@@ -9,6 +9,13 @@
         android:layout_width="30dip"
         android:layout_height="30dip"
         android:src="@drawable/launcher" />
+     <TextView
+        android:id="@+id/tv_appname_traffic"
+        android:gravity="center"
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="应用程序名称" />
 
     <TextView
         android:id="@+id/tv_tx_traffic"
