@@ -21,7 +21,7 @@ public class TrafficUtils {
 			long rx = TrafficStats.getUidRxBytes(info.applicationInfo.uid);
 			long tx = TrafficStats.getUidTxBytes(info.applicationInfo.uid);
 			String appname = info.applicationInfo.loadLabel(pm).toString();
-			System.out.println(appname+"rx = "+ rx +",  tx = "+ tx);
+			//System.out.println(appname+"rx = "+ rx +",  tx = "+ tx);
 			if(rx>0||tx>0){
 				mInfo = new MyTrafficInfo();
 				mInfo.setIcon(info.applicationInfo.loadIcon(pm));
