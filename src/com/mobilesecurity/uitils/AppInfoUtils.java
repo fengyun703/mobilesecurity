@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -75,6 +76,10 @@ public class AppInfoUtils {
 		List<PackageInfo> packageinfos = pm.getInstalledPackages(0);
 		for(PackageInfo info: packageinfos){
 			MyPackageInfo myinfo = new MyPackageInfo();
+			
+			//ActivityInfo[] ainfos =  info.activities;
+			//System.out.println(ainfos);
+			
 			myinfo.setAppName(info.applicationInfo.loadLabel(pm).toString());
 			myinfo.setPackageName(info.packageName);
 			myinfo.setIcon(info.applicationInfo.loadIcon(pm));

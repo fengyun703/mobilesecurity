@@ -57,7 +57,7 @@ public class Safe3Activity extends BaseSafeAbsActivity {
 		// System.out.println("fdsafd".replace(new String(), "w"));
 		//System.out.println(phone);
 		if (TextUtils.isEmpty(phone)) {
-			ToastUtils.showToast(this, "要开启手机防盗,必须绑定sim卡串号");
+			ToastUtils.showToast(this, "要开启手机防盗,必须有安全号码");
 		} else {
 			Editor ed = sp.edit();
 			ed.putString("phone", phone);

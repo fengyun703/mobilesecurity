@@ -122,7 +122,7 @@ public class AppManagerActivity extends Activity implements OnClickListener {
 
 			@Override
 			public void onScrollStateChanged(AbsListView view, int scrollState) {
-				System.out.println("onScrollStateChanged");
+				//System.out.println("onScrollStateChanged");
 			}
 
 			@Override
@@ -226,7 +226,7 @@ public class AppManagerActivity extends Activity implements OnClickListener {
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-			System.out.println("position:" + position);
+			//System.out.println("position:" + position);
 			ViewHold hold = null;
 			MyPackageInfo info = null;
 			if (position == 0) {

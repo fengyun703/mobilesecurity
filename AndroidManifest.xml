@@ -91,11 +91,25 @@
                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
             </intent-filter>
         </receiver>
+       <receiver android:name="com.mobilesecurity.receiver.MyWidget">
+           <intent-filter>
+               <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+           </intent-filter>
+           <meta-data android:name="android.appwidget.provider"  
+                 android:resource="@xml/appwidget_info"/>  
+       </receiver> 
+       <receiver android:name="com.mobilesecurity.receiver.KillProcessReceiver">
+           <intent-filter >
+               <action android:name="com.mobilesecurity.killProcess"></action>
+           </intent-filter>
+       </receiver>
+       
         
         <service android:name="com.mobilesecurity.services.GpsService"></service>
         <service android:name="com.mobilesecurity.services.BlackNumberService"></service>
         <service android:name="com.mobilesecurity.services.AddressQureyService"></service>
           <service android:name="com.mobilesecurity.services.AutoKillService"></service>
+           <service android:name="com.mobilesecurity.services.WidgetUpdateService"></service>
         
     </application>
 

@@ -46,7 +46,6 @@ public class AdvancedActivity extends Activity {
 		dialog.show();
 		new Thread(){
 			public void run() {
-				
 				if(SmsTools.smsBackup(AdvancedActivity.this, "smsbackup.xml", new SmsBackupCallBack() {
 					
 					@Override
