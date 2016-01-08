@@ -67,6 +67,7 @@
         <activity android:name="com.mobilesecurity.activities.AppManagerActivity"></activity>
          <activity android:name="com.mobilesecurity.activities.ProcessManagerActivity"></activity>
         <activity android:name="com.mobilesecurity.activities.ProcessSettingActivity"></activity>
+        <activity android:name="com.mobilesecurity.activities.TrafficManagerActivity"></activity>
         
 
         <receiver android:name="com.mobilesecurity.receiver.BootCompletedReceiver" >
