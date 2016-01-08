@@ -28,10 +28,11 @@ public class TrafficManagerActivity extends Activity {
 	private LinearLayout ll_loading;
 	private ListView lv;
 	private List<MyTrafficInfo> list;
-	
+
 	private Handler handler = new Handler(){
 		public void handleMessage(android.os.Message msg) {
 			ll_loading.setVisibility(View.INVISIBLE);
+			
 			if(list.size()>0){
 				lv.setAdapter(new MyAdapter());
 			}else{
@@ -47,18 +48,19 @@ public class TrafficManagerActivity extends Activity {
 		tv_wify = (TextView) findViewById(R.id.tv_wifytotal);
 		ll_loading = (LinearLayout) findViewById(R.id.ll_loading);
 		lv = (ListView) findViewById(R.id.lv_traffic);
+		
 		long mobileRx =  TrafficStats.getMobileRxBytes();
 		long mobileTx =  TrafficStats.getMobileTxBytes();
 		long mobleTotal = mobileRx+mobileTx;
-	
-		String mobile = "本次开机以来Wify总用流量："+Formatter.formatFileSize(this, mobleTotal);
-		tv_mobile.setText(mobile);
+		String mobile = "本次开机以来2G/3G/4G总用流量："+Formatter.formatFileSize(TrafficManagerActivity.this, mobleTotal);
 		
 		long totalRx =  TrafficStats.getTotalRxBytes();
 		long totalTx =  TrafficStats.getTotalTxBytes();
-		long totaltal = mobileRx+mobileTx;
+		long totaltal = totalRx+totalTx;
 		long wifyTotal = totaltal - mobleTotal;
-		String wify ="本次开机以来2G/3G/4G总用流量：" +Formatter.formatFileSize(this, wifyTotal);
+		String wify ="本次开机以来Wify总用流量:" +Formatter.formatFileSize(TrafficManagerActivity.this, wifyTotal);	
+		
+		tv_mobile.setText(mobile);
 		tv_wify.setText(wify);
 		//System.out.println(wify+"\n"+mobile+"\n"+totaltal);
 		getAppTraffic();

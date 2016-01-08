@@ -12,9 +12,8 @@
      <TextView
         android:id="@+id/tv_appname_traffic"
         android:gravity="center"
-        android:layout_width="0dip"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:text="应用程序名称" />
 
     <TextView
