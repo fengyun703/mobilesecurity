@@ -153,6 +153,11 @@ public class SmsTools {
 
 				case XmlPullParser.END_TAG:
 					if ("sms".equals(parser.getName())) {
+						/*Cursor cursor = cr.query(Uri.parse("content://sms"), null, " date =?",
+			                    new String[] { values.getAsString("date") }, null);
+			               根据date区别短信是否存在。     
+			              */
+					
 						Uri uri = cr
 								.insert(Uri.parse("content://sms/"), values);// 若插入数据已存在，返回null;
 						count++;
@@ -182,6 +187,5 @@ public class SmsTools {
 			e.printStackTrace();
 			return false;
 		}
-
 	}
 }

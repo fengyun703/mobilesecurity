@@ -27,10 +27,18 @@
         android:clickable="true"
         android:onClick="smsbackup"
         android:background="@drawable/bt_default_bg"/>
+    
     <TextView 
         style="@style/text_content_style"
-        android:text="短信回复"
+        android:text="短信恢复"
         android:clickable="true"
         android:onClick="smsrecovery"
         android:background="@drawable/bt_default_bg"/>
+    <TextView 
+        style="@style/text_content_style"
+        android:text="程序加锁"
+        android:clickable="true"
+        android:onClick="addLock"
+        android:background="@drawable/bt_default_bg"/>
+     
 </LinearLayout>

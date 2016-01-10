@@ -11,8 +11,10 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+
 import com.mobilesecurity.R;
 import com.mobilesecurity.services.AddressQureyService;
+import com.mobilesecurity.services.AppLockService;
 import com.mobilesecurity.services.BlackNumberService;
 import com.mobilesecurity.ui.SettingChangeView;
 import com.mobilesecurity.ui.SettingItemView;
@@ -24,6 +26,7 @@ public class SettingActivity extends Activity {
 	private SettingItemView siv_update2;*/
 	private SettingItemView siv_blacknumber;
 	private SettingItemView siv_address_setting;
+	private SettingItemView siv_applock_setting;
 	private SettingChangeView scv_address_color;
 	private SharedPreferences sp;
 	private static final String[] items = new String[] { "蓝色", "灰色", "绿色",
@@ -40,6 +43,7 @@ public class SettingActivity extends Activity {
 		siv_blacknumber = (SettingItemView) findViewById(R.id.siv_blacknumber_setting);
 		siv_address_setting = (SettingItemView) findViewById(R.id.siv_address_setting);
 		scv_address_color = (SettingChangeView) findViewById(R.id.scv_address_color);
+		siv_applock_setting = (SettingItemView) findViewById(R.id.siv_applock_setting);
 		//siv_update.setChecked(sp.getBoolean("update", false));
 
 		// System.out.println("SettingActivity: "+getContentResolver().toString());
@@ -202,6 +206,14 @@ public class SettingActivity extends Activity {
 			// System.out.println("服务已经关闭了！");
 		}
 
+		if (ServiceStateUtils.isRunning(SettingActivity.this,
+				"com.mobilesecurity.services.AppLockService")) {
+			siv_applock_setting.setChecked(true);
+			// System.out.println("服务已经开启了！");
+		} else {
+			siv_applock_setting.setChecked(false);
+			// System.out.println("服务已经关闭了！");
+		}
 		siv_update.setChecked(sp.getBoolean("update", false));
 		/*siv_update1.setChecked(sp.getBoolean("update1", false));
 		siv_update2.setChecked(sp.getBoolean("update2", false));*/
@@ -270,5 +282,27 @@ public class SettingActivity extends Activity {
 		});
 		builder.show();
 	}
+	
+	public void openAppLock(View view){
+		
+	
+		if (siv_applock_setting.isChecked()) {
+			 System.out.println("取消程序锁功能");
+			siv_applock_setting.setChecked(false);
+			
+			Intent service = new Intent(SettingActivity.this,
+					AppLockService.class);
+			stopService(service);
 
+		} else {
+			 System.out.println("开启程序锁功能");
+			siv_applock_setting.setChecked(true);
+			
+			Intent service = new Intent(SettingActivity.this,
+					AppLockService.class);
+			startService(service);
+		}
+		
+		
+	}
 }

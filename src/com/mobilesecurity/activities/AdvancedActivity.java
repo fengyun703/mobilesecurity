@@ -10,6 +10,7 @@ import com.mobilesecurity.uitils.ToastUtils;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -109,5 +110,11 @@ public class AdvancedActivity extends Activity {
 			};
 		}.start();
 	
+	}
+	
+	
+	public void addLock(View view){
+		Intent intent = new Intent(this, AppLockActivity.class);
+		startActivity(intent);
 	}
 }
