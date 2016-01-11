@@ -127,7 +127,7 @@ public class CleanCacheActivity extends Activity {
 			hold.tv_cachesize.setText(Formatter.formatFileSize(
 					CleanCacheActivity.this, info.cacheSize));
 			hold.tv_datasize.setText(Formatter.formatFileSize(
-					CleanCacheActivity.this, info.cacheSize));
+					CleanCacheActivity.this, info.dataSize));
 			hold.tv_codesize.setText(Formatter.formatFileSize(
 					CleanCacheActivity.this, info.codeSize));
 

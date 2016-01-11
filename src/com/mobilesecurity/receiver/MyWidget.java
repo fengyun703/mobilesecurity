@@ -19,7 +19,7 @@ public class MyWidget extends AppWidgetProvider {
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
 			int[] appWidgetIds) {
 		super.onUpdate(context, appWidgetManager, appWidgetIds);
-		System.out.println("Widget  onUpdate");
+		//System.out.println("Widget  onUpdate");
 		Intent intent = new Intent(context,WidgetUpdateService.class);
 		context.startService(intent);
 	}
@@ -27,13 +27,13 @@ public class MyWidget extends AppWidgetProvider {
 	@Override
 	public void onDeleted(Context context, int[] appWidgetIds) {
 		super.onDeleted(context, appWidgetIds);
-		System.out.println("Widget  onDeleted");
+		//System.out.println("Widget  onDeleted");
 	}
 
 	@Override
 	public void onDisabled(Context context) {
 		super.onDisabled(context);
-		System.out.println("Widget  onDisabled");
+		//System.out.println("Widget  onDisabled");
 		Intent intent = new Intent(context,WidgetUpdateService.class);
 		context.stopService(intent);
 	}
