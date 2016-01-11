@@ -30,6 +30,8 @@
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
 
     <instrumentation android:targetPackage="com.mobilesecurity" android:name="android.test.InstrumentationTestRunner"></instrumentation>
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE"/>
+    <uses-permission android:name="android.permission.CLEAR_APP_CACHE"/>
     
     <application
         android:allowBackup="true"
@@ -72,8 +74,9 @@
         <activity android:name="com.mobilesecurity.activities.AppLockActivity"></activity>
         <activity android:name="com.mobilesecurity.activities.AppLockPasswordActivity"
             android:launchMode="singleInstance">
-            
         </activity>
+        <activity android:name="com.mobilesecurity.activities.CleanCacheActivity"></activity>
+        
         
 
         <receiver android:name="com.mobilesecurity.receiver.BootCompletedReceiver" >

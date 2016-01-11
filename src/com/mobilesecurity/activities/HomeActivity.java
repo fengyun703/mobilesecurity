@@ -81,6 +81,13 @@ public class HomeActivity extends Activity {
 					StartActivityUtils.startActivity(HomeActivity.this,
 							TrafficManagerActivity.class);
 					break;
+				case 5:
+					break;
+				case 6:
+					StartActivityUtils.startActivity(HomeActivity.this,
+							CleanCacheActivity.class);
+					break;
+					
 				case 7:
 					StartActivityUtils.startActivity(HomeActivity.this,
 							AdvancedActivity.class);
