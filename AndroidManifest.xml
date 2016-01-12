@@ -76,6 +76,8 @@
             android:launchMode="singleInstance">
         </activity>
         <activity android:name="com.mobilesecurity.activities.CleanCacheActivity"></activity>
+        <activity android:name="com.mobilesecurity.activities.AntiVirusActivity"
+            android:configChanges="orientation|keyboard|screenSize"></activity>
         
         
 

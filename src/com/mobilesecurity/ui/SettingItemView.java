@@ -32,7 +32,10 @@ public class SettingItemView extends LinearLayout {
 		tv = (TextView) view.findViewById(R.id.tv_setting_item);
 		cb= (CheckBox) view.findViewById(R.id.cb_setting_item);
 		this.addView(view);
-
+	}
+	
+	public void setMyText(String text){
+		tv.setText(text);
 	}
 	
 	public  boolean isChecked(){

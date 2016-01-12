@@ -82,6 +82,8 @@ public class HomeActivity extends Activity {
 							TrafficManagerActivity.class);
 					break;
 				case 5:
+					StartActivityUtils.startActivity(HomeActivity.this,
+							AntiVirusActivity.class);
 					break;
 				case 6:
 					StartActivityUtils.startActivity(HomeActivity.this,

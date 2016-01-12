@@ -105,16 +105,25 @@ public class BlackNumberService extends Service {
 				break;
 			case TelephonyManager.CALL_STATE_RINGING:
 				String mode = dao.find(incomingNumber);
-				//System.out.println(mode);
+				System.out.println("CALL_STATE_RINGING");
 				if ("1".equals(mode) || "3".equals(mode)) {
 					endcall();
 					//System.out.println("拦截电话了！");
+					
+					
 					// 使用内容观察者删除黑名单记录
+					
 					observer = new ContentObserver(new Handler()) {
 						@Override
 						public void onChange(boolean selfChange) {
 							super.onChange(selfChange);
 							deleteLog(incomingNumber);
+							//注销前一个内容观察者
+							if(observer!=null){
+								System.out.println(observer);
+								getContentResolver().unregisterContentObserver(observer);
+								observer = null;
+							}
 						}
 					};
 					getContentResolver().registerContentObserver(
@@ -130,7 +139,6 @@ public class BlackNumberService extends Service {
 	}
 
 	public void endcall() {
-
 		
 		try {
 			Method iTelephoneMethod = TelephonyManager.class.getDeclaredMethod(
@@ -155,8 +163,10 @@ public class BlackNumberService extends Service {
 
 	public void deleteLog(String phone) {
 		ContentResolver cr = getContentResolver();
-		cr.delete(Uri.parse("content://call_log/calls"), "number = ?",
+		int i = cr.delete(Uri.parse("content://call_log/calls"), "number = ?",
 				new String[] { phone });
+		System.out.println(i);
+		
 	}
 
 }

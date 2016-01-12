@@ -80,6 +80,8 @@ public class SplashActivity extends Activity {
 		
 		copyDb("address.db");
 		copyDb("commonnum.db");
+		copyDb("antivirus.db");
+		
 	}
 	/**
 	 * 拷贝数据库文件到files目录
