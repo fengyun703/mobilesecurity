@@ -22,6 +22,8 @@ import android.os.Message;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
+import android.view.animation.Interpolator;
+import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -119,6 +121,8 @@ public class AntiVirusActivity extends Activity {
 				Animation.RELATIVE_TO_SELF, 0.5f);
 		a.setDuration(500);
 		a.setRepeatCount(Integer.MAX_VALUE);
+		Interpolator interpolator = new LinearInterpolator   ();
+		a.setInterpolator(interpolator);
 		iv_scanning.startAnimation(a);
 
 		bt_sure.setEnabled(false);
