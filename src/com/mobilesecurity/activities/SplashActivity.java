@@ -19,6 +19,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.Intent.ShortcutIconResource;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -43,7 +45,7 @@ public class SplashActivity extends Activity {
 	protected static final int UPDATE = 1;
 	private TextView tv_splash_version;
 	private TextView tv_splash_upload;
-
+	private SharedPreferences sp;
 	private Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
@@ -61,14 +63,13 @@ public class SplashActivity extends Activity {
 		tv_splash_version = (TextView) findViewById(R.id.tv_splash_version);
 		RelativeLayout splash_backgroud = (RelativeLayout) findViewById(R.id.splash_backgroud);
 		tv_splash_upload = (TextView) findViewById(R.id.tv_splash_upload);
-		SharedPreferences sp = getSharedPreferences("config",
-				Context.MODE_PRIVATE);
+		sp = getSharedPreferences("config", Context.MODE_PRIVATE);
 		tv_splash_version.setText(AppInfoUtils.getVersionName(this));
 		AlphaAnimation am = new AlphaAnimation(0.3f, 1.0f);
 		am.setDuration(2000);
 
 		splash_backgroud.startAnimation(am);
-		//System.out.println(sp.getBoolean("update", false));
+		// System.out.println(sp.getBoolean("update", false));
 		if (!sp.getBoolean("update", false)) {
 			// System.out.println("自动进入主界面");
 			StartActivityUtils.startActivityForDelayFinish(this,
@@ -77,25 +78,63 @@ public class SplashActivity extends Activity {
 			checkVersion();
 			// System.out.println("开始检查自动更新");
 		}
-		
+
 		copyDb("address.db");
 		copyDb("commonnum.db");
 		copyDb("antivirus.db");
-		
+		creatShortCut();
 	}
+
+	private void creatShortCut() {
+		/*
+		 * <receiver
+		 * android:name="com.android.launcher2.InstallShortcutReceiver"
+		 * android:permission
+		 * ="com.android.launcher.permission.INSTALL_SHORTCUT"> <intent-filter>
+		 * <action android:name="com.android.launcher.action.INSTALL_SHORTCUT"
+		 * /> </intent-filter> </receiver>
+		 */
+		//flag 禁止重复创建快捷方式
+		boolean flag = sp.getBoolean("shortcut", false);
+		//System.out.println(flag);
+		if (!flag) {
+			Intent intent = new Intent();
+			// 设置intent的action
+			intent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
+			
+			// 设置快捷方式名称
+			intent.putExtra(Intent.EXTRA_SHORTCUT_NAME, "安全卫士");
+			// 设置点击快捷方式的动作
+			Intent actionIntent = new Intent();
+			 actionIntent.setAction("com.mobilesecurity.shortcut");
+			//actionIntent.setClass(getApplicationContext(), SplashActivity.class);
+			actionIntent.addCategory("android.intent.category.DEFAULT");
+			 //actionIntent.addCategory("android.intent.category.LAUNCHER");
+			intent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, actionIntent);
+			
+			
+			// 设置快捷方式图片
+			ShortcutIconResource value = Intent.ShortcutIconResource
+					.fromContext(getApplicationContext(), R.drawable.launcher);
+			intent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, value);
+			sendBroadcast(intent);
+			sp.edit().putBoolean("shortcut", true).commit();
+		}
+	}
+
 	/**
 	 * 拷贝数据库文件到files目录
 	 */
-	public void copyDb(String filename){
-		File file = new File(getFilesDir(),filename);
-		if(!file.exists()){
+	public void copyDb(String filename) {
+		File file = new File(getFilesDir(), filename);
+		if (!file.exists()) {
 			try {
 				InputStream in = getAssets().open(filename);
 				OutputStream out = new FileOutputStream(file);
-				byte [] bs = new byte[1024];
+				byte[] bs = new byte[1024];
 				int len = 0;
-				while((len = in.read(bs))!=-1){
-					out.write(bs,0, len);
+				while ((len = in.read(bs)) != -1) {
+					out.write(bs, 0, len);
 				}
 				in.close();
 				out.close();
@@ -135,11 +174,12 @@ public class SplashActivity extends Activity {
 							msg.what = UPDATE;
 							msg.obj = info;
 							handler.sendMessageDelayed(msg, 2000);
-						}else{
-							//System.out.println("没有最新版本");
-							StartActivityUtils.startActivityForDelayFinish(SplashActivity.this,
-									HomeActivity.class, 2000);
-						
+						} else {
+							// System.out.println("没有最新版本");
+							StartActivityUtils.startActivityForDelayFinish(
+									SplashActivity.this, HomeActivity.class,
+									2000);
+
 						}
 						/*
 						 * System.out.println(info.desc);
