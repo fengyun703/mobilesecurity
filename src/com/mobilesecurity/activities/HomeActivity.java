@@ -1,5 +1,6 @@
 package com.mobilesecurity.activities;
 
+import android.R.string;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -66,6 +67,8 @@ public class HomeActivity extends Activity {
 
 					break;
 				case 1:
+					//String s= null;
+					//s.equals("fdsa");
 					StartActivityUtils.startActivity(HomeActivity.this,
 							BlackNumberActivity.class);
 					break;
